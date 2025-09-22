@@ -205,11 +205,24 @@
             width: 100%;
             height: 100%;
             background-color: var(--cream);
+            background-image: url('https://res.cloudinary.com/dgyjeotoa/image/upload/v1758562539/Imagen_de_WhatsApp_2025-09-22_a_las_14.25.48_56f6b81c_whjzm3.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
             z-index: 9999;
             display: flex;
             justify-content: center;
             align-items: center;
             transition: opacity 0.75s ease, visibility 0.75s ease;
+        }
+        #preloader::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.3);
         }
         #preloader.hidden {
             opacity: 0;
@@ -218,17 +231,12 @@
         }
         .preloader-content {
             text-align: center;
-        }
-        .preloader-logo {
-            font-family: var(--font-heading);
-            font-size: 2rem;
-            color: var(--marron);
-            margin-bottom: 1.5rem;
+            z-index: 1;
         }
         .loading-bar {
             width: 200px;
             height: 4px;
-            background-color: var(--sand);
+            background-color: rgba(255, 255, 255, 0.5);
             border-radius: 2px;
             overflow: hidden;
             margin: 0 auto;
@@ -236,7 +244,7 @@
         .loading-bar-inner {
             width: 0%;
             height: 100%;
-            background-color: var(--terracota);
+            background-color: var(--white);
             border-radius: 2px;
             animation: fill-bar 2s ease-out forwards;
         }
@@ -250,6 +258,8 @@
         /* ------------------- */
         section {
             padding: 6rem 0;
+            position: relative;
+            overflow: hidden;
         }
 
         .section-title {
@@ -348,8 +358,6 @@
             display: flex;
             align-items: center;
             padding-top: 80px; /* Header offset */
-            position: relative;
-            overflow: hidden;
         }
         
         #hero::before { /* Blob de fondo */
@@ -388,38 +396,6 @@
             color: var(--marron);
         }
         .hero-actions { display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; }
-        .hero-visual {
-            display: none; /* Mobile first */
-            justify-content: center;
-            align-items: center;
-            position: relative;
-        }
-        .hero-portrait {
-            width: 300px;
-            height: 300px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 8px solid var(--sand);
-            box-shadow: var(--shadow-medium);
-        }
-        .hero-illustration {
-            position: absolute;
-            width: 150px;
-            bottom: -20px;
-            right: -50px;
-            opacity: 0.8;
-            transition: transform 0.5s ease-out;
-        }
-        .hero-illustration .flower {
-            fill: var(--terracota);
-            fill-opacity: 0.7;
-        }
-        .hero-illustration .circle-outline {
-            stroke: var(--sand);
-            stroke-opacity: 0.5;
-            stroke-width: 3;
-            fill: none;
-        }
         
         /* About Section */
         #about .container {
@@ -427,6 +403,8 @@
             grid-template-columns: 1fr;
             gap: 3rem;
             align-items: center;
+            position: relative;
+            z-index: 2;
         }
         .about-image { text-align: center; }
         .about-image img {
@@ -598,12 +576,13 @@
         }
         .contact-card .icon { color: var(--terracota); margin-bottom: 1rem; }
         .contact-card h3 { margin-bottom: 0.5rem; }
-        .contact-card p { margin-bottom: 1.5rem; flex-grow: 1; }
+        .contact-card p { margin-bottom: 0; flex-grow: 1; }
         .contact-card span {
             font-weight: 500;
             color: var(--terracota);
             border-bottom: 2px solid var(--sand);
             padding-bottom: 2px;
+            margin-top: 1.5rem;
         }
 
         /* FAQ Section */
@@ -719,6 +698,55 @@
             width: 24px;
             height: 24px;
         }
+        
+        /* --- DECORACIONES (FLORES) --- */
+        .floating-flower {
+            position: absolute;
+            z-index: 0;
+            opacity: 0.6;
+            animation: float-rotate 15s ease-in-out infinite;
+            pointer-events: none; /* Evita que interfieran con el mouse */
+        }
+
+        .floating-flower svg {
+            width: 100%;
+            height: 100%;
+            display: block;
+            fill: var(--sand);
+        }
+
+        @keyframes float-rotate {
+            0% {
+                transform: translateY(0) rotate(0deg);
+            }
+            50% {
+                transform: translateY(-15px) rotate(12deg);
+            }
+            100% {
+                transform: translateY(0) rotate(0deg);
+            }
+        }
+
+        /* Posiciones y tamaños específicos */
+        .flower-1 { top: 20%; left: 10%; width: 80px; animation-duration: 18s; }
+        .flower-2 { bottom: 15%; right: 5%; width: 120px; animation-duration: 22s; opacity: 0.4; }
+        .flower-3 { top: 10%; right: 15%; width: 60px; animation-duration: 20s; }
+        .flower-4 { bottom: 5%; left: 5%; width: 100px; animation-duration: 17s; }
+        .flower-5 { top: 15%; right: 10%; width: 70px; animation-duration: 19s; }
+        .flower-6 { top: 20%; left: 8%; width: 90px; animation-duration: 21s; }
+        .flower-7 { bottom: 10%; right: 15%; width: 50px; animation-duration: 16s; }
+        .flower-8 { top: 70%; left: 5%; width: 50px; animation-duration: 25s; }
+        .flower-9 { top: 50%; right: 10%; width: 90px; animation-duration: 15s; }
+        .flower-10 { bottom: 20%; left: 15%; width: 70px; animation-duration: 23s; }
+        .flower-11 { top: 10%; left: 2%; width: 110px; animation-duration: 28s; opacity: 0.3; }
+        .flower-12 { bottom: 10%; right: 2%; width: 80px; animation-duration: 19s; }
+        .flower-13 { top: 25%; right: 20%; width: 60px; animation-duration: 21s; }
+        .flower-14 { bottom: 25%; left: 20%; width: 75px; animation-duration: 18s; }
+        .flower-15 { top: 60%; left: 10%; width: 55px; animation-duration: 26s; }
+        .flower-16 { bottom: 5%; right: 25%; width: 95px; animation-duration: 20s; }
+        .flower-17 { top: 5%; left: 15%; width: 65px; animation-duration: 17s; }
+        .flower-18 { bottom: 15%; left: 10%; width: 85px; animation-duration: 24s; }
+
 
         /* ------------------- */
         /* --- MEDIA QUERIES --- */
@@ -775,13 +803,11 @@
             h2 { font-size: 2.25rem; }
             
             #hero .container {
-                grid-template-columns: 2fr 1fr;
-                text-align: left;
+                grid-template-columns: 1fr;
+                text-align: center;
             }
-            .hero-content { text-align: left; }
-            .hero-content .subtitle { margin: 0 0 2rem; }
-            .hero-actions { justify-content: flex-start; }
-            .hero-visual { display: flex; }
+            .hero-content { text-align: center; }
+            .hero-actions { justify-content: center; }
             
             #about .container { grid-template-columns: 1fr 2fr; }
             .services-grid { grid-template-columns: repeat(2, 1fr); }
@@ -794,7 +820,7 @@
 
         @media (min-width: 1200px) {
             section { padding: 8rem 0; }
-            #hero .container { grid-template-columns: 1.5fr 1fr; gap: 4rem; }
+            #hero .container { grid-template-columns: 1fr; gap: 2rem; }
             .services-grid { grid-template-columns: repeat(4, 1fr); }
         }
 
@@ -802,9 +828,26 @@
 </head>
 <body>
 
+    <svg width="0" height="0" style="position:absolute;z-index:-1;">
+        <defs>
+            <symbol id="flower-svg" viewBox="0 0 100 100">
+                <g transform="translate(50,50)">
+                    <path d="M0 -45 A 20 20 0 0 1 0 -15 A 20 20 0 0 1 0 -45" transform="rotate(0)"/>
+                    <path d="M0 -45 A 20 20 0 0 1 0 -15 A 20 20 0 0 1 0 -45" transform="rotate(45)"/>
+                    <path d="M0 -45 A 20 20 0 0 1 0 -15 A 20 20 0 0 1 0 -45" transform="rotate(90)"/>
+                    <path d="M0 -45 A 20 20 0 0 1 0 -15 A 20 20 0 0 1 0 -45" transform="rotate(135)"/>
+                    <path d="M0 -45 A 20 20 0 0 1 0 -15 A 20 20 0 0 1 0 -45" transform="rotate(180)"/>
+                    <path d="M0 -45 A 20 20 0 0 1 0 -15 A 20 20 0 0 1 0 -45" transform="rotate(225)"/>
+                    <path d="M0 -45 A 20 20 0 0 1 0 -15 A 20 20 0 0 1 0 -45" transform="rotate(270)"/>
+                    <path d="M0 -45 A 20 20 0 0 1 0 -15 A 20 20 0 0 1 0 -45" transform="rotate(315)"/>
+                    <circle r="17" fill="rgba(255,255,255,0.7)"/>
+                </g>
+            </symbol>
+        </defs>
+    </svg>
+
     <div id="preloader">
         <div class="preloader-content">
-            <div class="preloader-logo">Lic. Melina Najum</div>
             <div class="loading-bar">
                 <div class="loading-bar-inner"></div>
             </div>
@@ -840,24 +883,17 @@
         <!-- ========= HERO ========== -->
         <!-- ======================= -->
         <section id="hero">
+            <div class="floating-flower flower-1"><svg><use href="#flower-svg"/></svg></div>
+            <div class="floating-flower flower-2"><svg><use href="#flower-svg"/></svg></div>
+            <div class="floating-flower flower-8"><svg><use href="#flower-svg"/></svg></div>
             <div class="container">
                 <div class="hero-content reveal">
                     <h1 class="fade-in">Lic. Melina Najum — Psicóloga clínica</h1>
-                    <p class="subtitle fade-in" style="animation-delay: 0.2s;">Acompañamiento perinatal y puerperio. Modalidad online y presencial en CABA. Honorarios accesibles.</p>
+                    <p class="subtitle fade-in" style="animation-delay: 0.2s;">Atención psicológica para adolescentes y adultos. Experiencia en consumos problemáticos y trastornos de la alimentación. Modalidad online y presencial. Honorarios accesibles.</p>
                     <div class="hero-actions fade-in" style="animation-delay: 0.4s;">
                         <a href="#contact" class="btn btn-primary">Solicitar primera consulta</a>
                         <a href="#services" class="btn btn-secondary">Conocer servicios</a>
                     </div>
-                </div>
-                <div class="hero-visual fade-in" style="animation-delay: 0.3s;">
-                    <!-- Reemplazar 'portrait.jpg' con la foto real -->
-                    <img src="https://placehold.co/400x400/DDB29A/644940?text=MN" alt="Retrato profesional de la Lic. Melina Najum" class="hero-portrait" loading="eager">
-                    <!-- Ilustración SVG inline para control de estilo y performance -->
-                    <svg class="hero-illustration" id="hero-illustration-svg" width="151" height="151" viewBox="0 0 151 151" xmlns="http://www.w3.org/2000/svg">
-                        <path class="flower" d="M106.5 45C106.5 45.8284 105.828 46.5 105 46.5C104.172 46.5 103.5 45.8284 103.5 45C103.5 44.1716 104.172 43.5 105 43.5C105.828 43.5 106.5 44.1716 106.5 45ZM112.553 58.0779C114.331 52.8879 111.968 47.1121 106.778 45.334L105 44.7557L103.222 45.334C98.0321 47.1121 95.6692 52.8879 97.4473 58.0779L98.053 60H111.947L112.553 58.0779Z"/>
-                        <path class="flower" d="M60.5 86C60.5 86.8284 59.8284 87.5 59 87.5C58.1716 87.5 57.5 86.8284 57.5 86C57.5 85.1716 58.1716 84.5 59 84.5C59.8284 84.5 60.5 85.1716 60.5 86ZM66.5527 99.0779C68.3308 93.8879 65.9679 88.1121 60.7779 86.334L59 85.7557L57.2221 86.334C52.0321 88.1121 49.6692 93.8879 51.4473 99.0779L52.053 101H65.947L66.5527 99.0779Z"/>
-                        <circle class="circle-outline" cx="75.5" cy="75.5" r="74"/>
-                    </svg>
                 </div>
             </div>
         </section>
@@ -866,17 +902,20 @@
         <!-- ========= SOBRE MI ======== -->
         <!-- ======================= -->
         <section id="about">
+            <div class="floating-flower flower-3"><svg><use href="#flower-svg"/></svg></div>
+            <div class="floating-flower flower-9"><svg><use href="#flower-svg"/></svg></div>
+            <div class="floating-flower flower-10"><svg><use href="#flower-svg"/></svg></div>
             <div class="container">
                 <div class="about-image reveal">
                     <!-- Reemplazar con foto real -->
-                    <img src="https://placehold.co/400x400/DDB29A/FFFFFF?text=Sobre+Mí" alt="Lic. Melina Najum en su consultorio" loading="lazy">
+                    <img src="https://res.cloudinary.com/dgyjeotoa/image/upload/v1758562539/Imagen_de_WhatsApp_2025-09-22_a_las_14.30.55_588d5429_nj9zxd.jpg" alt="Lic. Melina Najum en su consultorio" loading="lazy">
                 </div>
                 <div class="about-content reveal">
                     <span class="section-subtitle">Conoceme</span>
                     <h2>Un espacio seguro para tu proceso</h2>
                     <h3>Lic. Melina Najum</h3>
                     <span class="credentials">Psicóloga UBA. Psicoanalista.</span>
-                    <p>Soy Lic. Melina Najum (Psicóloga UBA, psicoanalista). Acompaño procesos de embarazo, puerperio y salud emocional con un enfoque empático y profesional. Ofrezco sesiones individuales y grupos de acompañamiento (AÚPA). Modalidad online y presencial.</p>
+                    <p>Soy Lic. Melina Najum (Psicóloga UBA, psicoanalista). Ofrezco un espacio terapéutico para adolescentes y adultos, con experiencia en consumos problemáticos y trastornos de la alimentación. También brindo acompañamiento perinatal y en puerperio (individual y grupal). Mi enfoque es empático, profesional y adaptado a tus necesidades.</p>
                 </div>
             </div>
         </section>
@@ -885,6 +924,9 @@
         <!-- ======== SERVICIOS ======== -->
         <!-- ======================= -->
         <section id="services">
+            <div class="floating-flower flower-4"><svg><use href="#flower-svg"/></svg></div>
+            <div class="floating-flower flower-11"><svg><use href="#flower-svg"/></svg></div>
+            <div class="floating-flower flower-12"><svg><use href="#flower-svg"/></svg></div>
             <div class="container">
                 <div class="section-title reveal">
                     <span>Acompañamiento</span>
@@ -895,32 +937,32 @@
                         <div class="icon">
                              <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"></path><path d="M19 10v2a7 7 0 0 1-14 0v-2"></path><line x1="12" y1="19" x2="12" y2="23"></line></svg>
                         </div>
-                        <h3>Consulta individual</h3>
-                        <p>Acompañamiento clínico para adultos y maternidad.</p>
+                        <h3>Atención a Adolescentes y Adultos</h3>
+                        <p>Terapia individual para abordar diversas problemáticas, crisis vitales y búsqueda de bienestar.</p>
                         <a href="#contact">Más información</a>
                     </div>
                     <div class="service-card reveal" style="transition-delay: 0.1s;">
                         <div class="icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="4"></circle><line x1="4.93" y1="4.93" x2="9.17" y2="9.17"></line><line x1="14.83" y1="14.83" x2="19.07" y2="19.07"></line><line x1="14.83" y1="9.17" x2="19.07" y2="4.93"></line><line x1="14.83" y1="9.17" x2="18.36" y2="5.64"></line><line x1="4.93" y1="19.07" x2="9.17" y2="14.83"></line></svg>
                         </div>
-                        <h3>Acompañamiento perinatal (AÚPA)</h3>
-                        <p>Espacio de encuentro y catarsis en modalidad online.</p>
+                        <h3>Consumos Problemáticos</h3>
+                        <p>Acompañamiento terapéutico en el abordaje de consumos problemáticos de sustancias.</p>
                         <a href="#contact">Más información</a>
                     </div>
                     <div class="service-card reveal" style="transition-delay: 0.2s;">
                         <div class="icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
                         </div>
-                        <h3>Terapia de pareja</h3>
-                        <p>Herramientas para mejorar comunicación y vínculo.</p>
+                        <h3>Trastornos de la Alimentación</h3>
+                        <p>Experiencia en el tratamiento de trastornos de la conducta alimentaria desde un enfoque integral.</p>
                         <a href="#contact">Más información</a>
                     </div>
                     <div class="service-card reveal" style="transition-delay: 0.3s;">
                         <div class="icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
                         </div>
-                        <h3>Grupos y talleres</h3>
-                        <p>Grupos de acompañamiento temáticos y de apoyo mutuo.</p>
+                        <h3>Acompañamiento Perinatal</h3>
+                        <p>Sesiones individuales y grupales (Dispositivo AÚPA) para transitar el embarazo y puerperio.</p>
                         <a href="#contact">Más información</a>
                     </div>
                 </div>
@@ -931,6 +973,8 @@
         <!-- ======= BENEFICIOS ====== -->
         <!-- ======================= -->
         <section id="benefits">
+            <div class="floating-flower flower-13"><svg><use href="#flower-svg"/></svg></div>
+            <div class="floating-flower flower-14"><svg><use href="#flower-svg"/></svg></div>
             <div class="container">
                 <div class="section-title reveal">
                     <span>Tu bienestar</span>
@@ -961,6 +1005,9 @@
         <!-- ===== TESTIMONIOS ===== -->
         <!-- ======================= -->
         <section id="testimonials">
+            <div class="floating-flower flower-5"><svg><use href="#flower-svg"/></svg></div>
+            <div class="floating-flower flower-15"><svg><use href="#flower-svg"/></svg></div>
+            <div class="floating-flower flower-16"><svg><use href="#flower-svg"/></svg></div>
             <div class="container reveal">
                 <div class="section-title">
                     <span>Experiencias</span>
@@ -997,6 +1044,9 @@
         <!-- ======== CONTACTO ======== -->
         <!-- ======================= -->
         <section id="contact">
+            <div class="floating-flower flower-6"><svg><use href="#flower-svg"/></svg></div>
+            <div class="floating-flower flower-17"><svg><use href="#flower-svg"/></svg></div>
+            <div class="floating-flower flower-18"><svg><use href="#flower-svg"/></svg></div>
             <div class="container reveal">
                 <div class="section-title">
                     <span>¿Empezamos?</span>
@@ -1025,8 +1075,7 @@
                              <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
                         </div>
                         <h3>Consultorio</h3>
-                        <p>Humahuaca 4400, CABA</p>
-                        <span>Modalidad presencial</span>
+                        <p>Modalidad presencial o virtual en CABA.<br>Humahuaca 4400, Buenos Aires</p>
                     </div>
                 </div>
             </div>
@@ -1036,6 +1085,7 @@
         <!-- ========== FAQ ========== -->
         <!-- ======================= -->
         <section id="faq">
+            <div class="floating-flower flower-7"><svg><use href="#flower-svg"/></svg></div>
             <div class="container reveal">
                  <div class="section-title">
                     <span>Dudas comunes</span>
@@ -1146,7 +1196,7 @@
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M16.6 14.2c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1-.2.2-.6.8-.8 1-.1.2-.3.2-.5.1-.2-.1-1-.4-1.9-1.2-.7-.6-1.2-1.4-1.3-1.6-.1-.2 0-.4.1-.5.1-.1.2-.2.4-.4.1-.1.2-.2.2-.4.1-.1.1-.3 0-.4-.1-.1-.6-1.5-.8-2-.2-.5-.4-.4-.5-.4h-.5c-.2 0-.4.2-.6.4-.2.2-.8.8-.8 1.9s.8 2.2 1 2.3c.1.1 1.5 2.3 3.6 3.2.5.2.8.3 1.1.4.5.1.9.1 1.2.1.4 0 1.1-.4 1.3-.8.2-.4.2-.8.1-.9-.1-.1-.2-.2-.4-.3zM12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm0 18.2c-4.5 0-8.2-3.7-8.2-8.2S7.5 3.8 12 3.8 20.2 7.5 20.2 12 16.5 20.2 12 20.2z"/></svg>
         </a>
         <a href="https://www.instagram.com/lic.melina.najum/" target="_blank" rel="noopener noreferrer" aria-label="Ver perfil de Instagram">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2c2.7 0 3 .01 4.1.06 1.1.05 1.8.22 2.5.5.7.27 1.2.63 1.8 1.18.54.55.9 1.1 1.18 1.8.28.66.45 1.4.5 2.5.05 1.1.06 1.4.06 4.1s-.01 3-.06 4.1c-.05 1.1-.22 1.8-.5 2.5-.27.7-.63 1.2-1.18 1.8-.55.54-1.1.9-1.8 1.18-.66.28-1.4.45-2.5.5-1.1.05-1.4.06-4.1.06s-3-.01-4.1-.06c-1.1-.05-1.8-.22-2.5-.5-.7-.27-1.2-.63-1.8-1.18-.54-.55-.9-1.1-1.18-1.8-.28-.66-.45-1.4-.5-2.5C2.01 15 2 14.7 2 12s.01-3 .06-4.1c.05-1.1.22-1.8.5-2.5.27-.7.63-1.2 1.18-1.8.55-.54 1.1-.9 1.8-1.18.66-.28 1.4-.45 2.5-.5C9 2.01 9.3 2 12 2zm0 1.8c-2.7 0-3-.01-4-.06-1-.05-1.5.12-1.9.28-.4.17-.7.38-1.1.78-.4.4-.6.7-.78 1.1-.16.4-.33 1-.28 1.9.05 1 .06 1.3.06 4s-.01 3-.06 4c-.05 1-.12 1.5-.28 1.9-.17.4-.38.7-.78 1.1-.4.4-.7.6-1.1.78-.4.16-1 .33-1.9.28-1 .05-1.3.06-4 .06s-3-.01-4-.06c-1-.05-1.5-.12-1.9-.28-.4-.17-.7-.38-1.1-.78-.4-.4-.6-.7-.78-1.1-.16-.4-.33-1-.28-1.9-.05-1-.06-1.3-.06-4s.01-3 .06-4c.05-1 .12-1.5.28-1.9.17-.4.38-.7.78-1.1.4-.4.7-.6 1.1-.78.4-.16 1-.33 1.9-.28C9 3.81 9.3 3.8 12 3.8z M12 6.8c-2.9 0-5.2 2.3-5.2 5.2s2.3 5.2 5.2 5.2 5.2-2.3 5.2-5.2-2.3-5.2-5.2-5.2zm0 8.6c-1.9 0-3.4-1.5-3.4-3.4s1.5-3.4 3.4-3.4 3.4 1.5 3.4 3.4-1.5 3.4-3.4 3.4z M18.4 4.5c-.8 0-1.5.7-1.5 1.5s.7 1.5 1.5 1.5 1.5-.7 1.5-1.5-.7-1.5-1.5-1.5z"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2c2.7 0 3 .01 4.1.06 1.1.05 1.8.22 2.5.5.7.27 1.2.63 1.8 1.18.54.55.9 1.1 1.18 1.8.28.66.45 1.4.5 2.5.05 1.1.06 1.4.06 4.1s-.01 3-.06 4.1c-.05 1.1-.22 1.8-.5 2.5-.27.7-.63 1.2-1.18 1.8-.55.54-1.1.9-1.8 1.18-.66.28-1.4.45-2.5.5-1.1.05-1.4.06-4.1.06s-3-.01-4.1-.06c-1.1-.05-1.8-.22-2.5-.5-.7-.27-1.2-.63-1.8-1.18-.54-.55-.9-1.1-1.18-1.8-.28-.66-.45-1.4-.5-2.5C2.01 15 2 14.7 2 12s.01-3 .06-4.1c.05-1.1.22-1.8.5-2.5.27-.7.63 1.2 1.18-1.8.55-.54 1.1-.9 1.8-1.18.66-.28 1.4-.45 2.5-.5C9 2.01 9.3 2 12 2zm0 1.8c-2.7 0-3-.01-4-.06-1-.05-1.5.12-1.9.28-.4.17-.7.38-1.1.78-.4.4-.6.7-.78 1.1-.16.4-.33 1-.28 1.9.05 1 .06 1.3.06 4s-.01 3-.06 4c-.05 1-.12 1.5-.28 1.9-.17.4-.38.7-.78 1.1-.4.4-.7.6-1.1.78-.4.16-1 .33-1.9.28-1 .05-1.3.06-4 .06s-3-.01-4-.06c-1-.05-1.5-.12-1.9-.28-.4-.17-.7-.38-1.1-.78-.4-.4-.6-.7-.78-1.1-.16-.4-.33-1-.28-1.9-.05-1-.06-1.3-.06-4s.01-3 .06-4c.05-1 .12-1.5.28-1.9.17-.4.38-.7.78-1.1.4-.4.7-.6 1.1-.78.4-.16 1-.33 1.9-.28C9 3.81 9.3 3.8 12 3.8z M12 6.8c-2.9 0-5.2 2.3-5.2 5.2s2.3 5.2 5.2 5.2 5.2-2.3 5.2-5.2-2.3-5.2-5.2-5.2zm0 8.6c-1.9 0-3.4-1.5-3.4-3.4s1.5-3.4 3.4-3.4 3.4 1.5 3.4 3.4-1.5 3.4-3.4 3.4z M18.4 4.5c-.8 0-1.5.7-1.5 1.5s.7 1.5 1.5 1.5 1.5-.7 1.5-1.5-.7-1.5-1.5-1.5z"/></svg>
         </a>
     </div>
 
@@ -1228,17 +1278,6 @@
         });
         revealElements.forEach(el => observer.observe(el));
         
-        // ===================================
-        // --- HERO PARALLAX EFFECT ---
-        // ===================================
-        const illustration = document.getElementById('hero-illustration-svg');
-        window.addEventListener('scroll', () => {
-             const scrollPosition = window.pageYOffset;
-             if (window.matchMedia("(min-width: 768px)").matches && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-                illustration.style.transform = `translateY(${scrollPosition * 0.1}px)`;
-             }
-        });
-
         // ===================================
         // --- TESTIMONIAL CAROUSEL ---
         // ===================================
@@ -1325,4 +1364,6 @@
 
 </body>
 </html>
+
+
 
